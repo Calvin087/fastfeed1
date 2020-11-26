@@ -1,3 +1,4 @@
+import { useAuth } from "@/lib/auth";
 import {
     Flex,
     Link,
@@ -10,11 +11,20 @@ import {
 } from "@chakra-ui/react";
 import TheLogo from "./logo";
 
-const DashboardShell = ({children}) => (
+const DashboardShell = ({ children }) => {
+    const auth = useAuth();
+
+    return (
+
     <Flex flexDirection="column">
-        <Flex justifyContent="space-between" backgroundColor="white" p={4}>
+        <Flex
+            justifyContent="space-between"
+            backgroundColor="white"
+            py={4}
+            px={8}
+        >
             <Stack spacing={2} isInline alignItems="center">
-                <TheLogo color="red.500" w={6} h={6} />
+                <TheLogo color="red.500" w={8} h={8} />
                 <Link>Feedback</Link>
                 <Link>Sites</Link>
             </Stack>
@@ -24,27 +34,29 @@ const DashboardShell = ({children}) => (
                 alignItems="center"
             >
                 <Link mr={4}>Account</Link>
-                <Avatar size="sm" />
+                <Avatar size="sm" src={auth.user.photoUrl} />
             </Flex>
         </Flex>
-        <Flex backgroundColor="gray.100" p={8} height="100%">
+        <Flex backgroundColor="gray.100" p={8} height="100%" h="100vh">
             <Flex
                 maxWidth="800px"
-                justifyContent="center"
-                alignItems="center"
+                w="100%"
                 ml="auto"
                 mr="auto"
+                direction="column"
             >
                 <Breadcrumb>
                     <BreadcrumbItem isCurrentPage>
                         <BreadcrumbLink>Sites</BreadcrumbLink>
                     </BreadcrumbItem>
-                    <Heading>Sites</Heading>
-                    {children}
                 </Breadcrumb>
+                <Heading mb={4}>Sites</Heading>
+                {children}
             </Flex>
         </Flex>
     </Flex>
-);
+    
+    )
+};
 
 export default DashboardShell;

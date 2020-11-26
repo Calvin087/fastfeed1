@@ -189,3 +189,8 @@ import 'firebase/firestore'
 
 - I started with the dashboard shell, ripped out the changing box and converted it to a component wrapped in the Dashboard shell tag.
 - Then inside the dashboard I placed {children} and passed children as props
+  - Basically anything that I place inbetween <DashboardShell> Becomes a child passed in as props </DashboardShell>
+
+https://www.youtube.com/watch?v=3g6-v3_BNbM&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=4&ab_channel=LeeRobinson
+
+47.12
