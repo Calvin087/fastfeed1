@@ -1,3 +1,4 @@
+import { useAuth } from "@/lib/auth";
 import { createSite } from "@/lib/db";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
@@ -13,15 +14,35 @@ import {
     Input,
     FormLabel,
     Button,
-    useDisclosure
+    useToast,
+    useDisclosure,
 } from "@chakra-ui/react";
 
 
+
 const AddSiteModal = () => {
+    const initialRef = useRef();
+    const toast = useToast();
+    const auth = useAuth()
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { register, handleSubmit } = useForm();
-    const onCreateSite = (data) => createSite(data);
-    const initialRef = useRef();
+    
+    const onCreateSite = ({ websiteName, websiteUrl }) => {
+        createSite({
+            authorID: auth.user.uid,
+            createdAt: new Date().toISOString(),
+            websiteName: websiteName,
+            websiteUrl: websiteUrl,
+        });
+        toast({
+            title: "All Done!",
+            description: "We've updated your sites for you.",
+            status: "success",
+            duration: 5000,
+            isClosable: true
+        });
+        onClose();
+    };
  
     return (
         <>
@@ -49,7 +70,7 @@ const AddSiteModal = () => {
                             <Input
                                 ref={initialRef}
                                 placeholder="My Site"
-                                name="Site"
+                                name="websiteName"
                                 ref={register({
                                     required: true
                                 })}
@@ -59,8 +80,9 @@ const AddSiteModal = () => {
                         <FormControl mt={4}>
                             <FormLabel>Link</FormLabel>
                             <Input
+                                ref={initialRef}
                                 placeholder="https://website.com"
-                                name="url"
+                                name="websiteUrl"
                                 ref={register({
                                     required: true
                                 })}

@@ -209,7 +209,82 @@ import 'firebase/firestore'
 - Save the info to the database by adding a new function to db.js
   - .add not .set, because fs will add the id for me.
 
+## Adding toast
+
+Actually really easy. Import the modules then paste in the function call 
+
+```js
+
+toast({
+          title: "Account created.",
+          description: "We've... account for you.",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        })
+
+```
+This was placed inside a button onClick function so that it opens when the button is clicked. Nice.
+
+**Saving More Data to db**
+
+```js
+
+    const onCreateSite = (data) => {
+        createSite(data);
+ 
+        onClose();
+    };
+
+```
+
+Sending an object instead.
+
+```js
+
+    const onCreateSite = ({ websiteName, websiteUrl }) => {
+    createSite({
+        authorID: auth.user.uid,
+        createdAt: new Date().toISOString(),
+        websiteName: websiteName,
+        websiteUrl: websiteUrl,
+    });
+ 
+    onClose();
+};
+
+```
+
+## Firebase Server side
+
+- [Jamstack functions](https://jamstackfns.com/f/firebase)
+- [Response Helpers](https://nextjs.org/docs/api-routes/response-helpers)
+  - [API Routes](https://nextjs.org/docs/api-routes/introduction)
+- [Reading from Firebase](https://firebase.google.com/docs/firestore/query-data/get-data#node.js)
+
+- Firebase -> Project Settings -> Service account -> Gen new key == download json file
+- Break the Key on the new lines.
+- ```npm i firebase-admin```
+- initialise connection to admin == ```firebase-admin.js```
+- copy ```initializeApp``` from jamstack functions
+- config email + private key with new lines and paste url, reuse project ID
+- Copy Response helper
+- 
+
+```
+|-pages
+    | -api
+        | -sites
+```
+
+```js
+
+export default function handler(_, res) {
+    res.status(200).json({ name: "Next.js" });
+}
+
+```
 
 https://www.youtube.com/watch?v=u8iv_yhSRI8&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=5&ab_channel=LeeRobinson
 
-starting
+16.51
