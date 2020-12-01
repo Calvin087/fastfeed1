@@ -183,7 +183,8 @@ import 'firebase/firestore'
 - Create components folder to create a js file
 - Remove cssReset and theme provider
 - Change /core to /react on imports
-- Rename const and export
+- Rename const and export default
+- Make sure components inside are imported ie: FormLabel, Input etc
 
 **Children**
 
@@ -191,6 +192,24 @@ import 'firebase/firestore'
 - Then inside the dashboard I placed {children} and passed children as props
   - Basically anything that I place inbetween <DashboardShell> Becomes a child passed in as props </DashboardShell>
 
-https://www.youtube.com/watch?v=3g6-v3_BNbM&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=4&ab_channel=LeeRobinson
+## React Hook Form
+- npm install react-hook-form
+- Copy over imports + state variables
+- Copy over form wrapper ```<form onSubmit={handleSubmit(onSubmit)}>```
+- Update inputs
+```js
+<Input
+    placeholder="https://website.com"
+    name="url"
+    ref={register({
+        required: true
+    })}
+/>
+```
+- Save the info to the database by adding a new function to db.js
+  - .add not .set, because fs will add the id for me.
 
-47.12
+
+https://www.youtube.com/watch?v=u8iv_yhSRI8&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=5&ab_channel=LeeRobinson
+
+starting
