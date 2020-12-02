@@ -1,3 +1,5 @@
+https://github.com/leerob/fastfeedback/pulls?q=
+
 # Firebase
 
 ## Set up
@@ -268,8 +270,10 @@ Sending an object instead.
 - initialise connection to admin == ```firebase-admin.js```
 - copy ```initializeApp``` from jamstack functions
 - config email + private key with new lines and paste url, reuse project ID
-- Copy Response helper
-- 
+  - Private key "--begin etc end--"
+  - private_key: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, "\n")
+  - Have to use the whole key then split on a new line
+- Nothing in the docs match what we did here for db connection. Below is working.
 
 ```
 |-pages
@@ -279,12 +283,23 @@ Sending an object instead.
 
 ```js
 
-export default function handler(_, res) {
-    res.status(200).json({ name: "Next.js" });
+export default async (_, res) => {
+    const snapshot = await db.collection('sites').get()
+    
+    console.log(snapshot);
+
+    const sites = []
+
+    snapshot.forEach((doc) => {
+        sites.push({id: doc.id, ...doc.data() })
+    })
+
+    res.status(200).json(sites)
+
 }
 
 ```
 
 https://www.youtube.com/watch?v=u8iv_yhSRI8&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=5&ab_channel=LeeRobinson
 
-16.51
+34.53
