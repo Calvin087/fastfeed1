@@ -300,6 +300,26 @@ export default async (_, res) => {
 
 ```
 
+## SWR Data Fetching using Hooks
+
+[SWR](https://swr.vercel.app/)
+
+- ```npm i swr`
+- Refreshes data in the background
+- Stays up to date
+- Set up to return my api call as json...
+
+## Parsing Dates
+
+- [Formatting Date](https://date-fns.org/v2.16.1/docs/format)
+- ```npm i date-fns```
+
+## Locally mutate state
+
+- ```import { mutate } from 'swr'```
+- locally mutates the state on the passed page.....
+  - After we create a site, tell the sites page to update immediately?
+
 https://www.youtube.com/watch?v=u8iv_yhSRI8&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=5&ab_channel=LeeRobinson
 
-34.53
+59.23

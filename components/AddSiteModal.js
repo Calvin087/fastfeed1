@@ -2,6 +2,7 @@ import { useAuth } from "@/lib/auth";
 import { createSite } from "@/lib/db";
 import { useRef } from "react";
 import { useForm } from "react-hook-form";
+import { mutate } from "swr";
 import {
     Modal,
     ModalOverlay,
@@ -15,24 +16,22 @@ import {
     FormLabel,
     Button,
     useToast,
-    useDisclosure,
+    useDisclosure
 } from "@chakra-ui/react";
 
-
-
-const AddSiteModal = () => {
+const AddSiteModal = ({ children }) => {
     const initialRef = useRef();
     const toast = useToast();
-    const auth = useAuth()
+    const auth = useAuth();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { register, handleSubmit } = useForm();
-    
+
     const onCreateSite = ({ websiteName, websiteUrl }) => {
         createSite({
             authorID: auth.user.uid,
             createdAt: new Date().toISOString(),
             websiteName: websiteName,
-            websiteUrl: websiteUrl,
+            websiteUrl: websiteUrl
         });
         toast({
             title: "All Done!",
@@ -41,18 +40,27 @@ const AddSiteModal = () => {
             duration: 5000,
             isClosable: true
         });
+        mutate(
+            "/api/sites",
+            mutate("/api/user", { ...data, name: newName }, false)
+        );
         onClose();
     };
- 
+
     return (
         <>
             <Button
+                backgroundColor="gray.900"
+                color="white"
                 fontWeight="medium"
-                maxW="250px"
-                display="block"
+                _hover={{ bg: "gray.700" }}
+                _active={{
+                    bg: "gray.800",
+                    transform: "scale(0.95)"
+                }}
                 onClick={onOpen}
             >
-                Add your first site
+                {children}
             </Button>
 
             <Modal
