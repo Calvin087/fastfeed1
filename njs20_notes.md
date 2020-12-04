@@ -321,7 +321,10 @@ export default async (_, res) => {
   - After we create a site, tell the sites page to update immediately?
 
 
-## Snapshot of DB
+## Snapshot of DB + Dynamic Routing
+
+[Dynamic Routing](https://nextjs.org/docs/api-routes/dynamic-api-routes)
+```[fileName].js``` will send fileName as a variable to the page query. It's whatever is attached to the end of the URL and that will act as a variable, so it could be a id from the database or a location in a city.
 
 We get a snapshot, make a variable (empty list), then iterate over those values and add them to the list.
 
@@ -346,8 +349,23 @@ export async function getAllFeedback(siteId) {
 
 Then we create a folder in ```api``` called feedback -> ```[siteId].js``` which will be some kind of dynamic page.
 
-We use the request to look at the ```siteID``` coming in, probably as the url then we use that to ping ```firestore``` and fetch that siteId and render the info using the ```getAllFeedback()``` helper function 
+We use the request to look at the ```siteID``` coming in, probably as the url then we use that to ping ```firestore``` and fetch that siteId and render the info using the ```getAllFeedback()``` helper function
+
+Visiting this page returns a json object from the db for this specific ID which is saved in collection ```feedback```
+
+```http://localhost:3000/api/feedback/FnIEZk6dRrGidspMhIs0```
+
+
+## Get static props + paths
+
+[Static Props](https://nextjs.org/docs/basic-features/data-fetching#getstaticprops-static-generation)
+
+**Props**
+- Allows me to generate static sites based on dynamic content.
+- GetStaticProps is passed data and returns actual props that can be used in the component below it. It's like being passed params.
+  - getStaticProps + getStaticPaths boilerplate from nextjs page
+  - strip out the params route being passed in and send it to helper function.
 
 https://www.youtube.com/watch?v=1nRWL5ljOqU&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=6&ab_channel=LeeRobinson
 
-11.07
+23.36
