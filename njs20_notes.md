@@ -320,6 +320,34 @@ export default async (_, res) => {
 - locally mutates the state on the passed page.....
   - After we create a site, tell the sites page to update immediately?
 
-https://www.youtube.com/watch?v=u8iv_yhSRI8&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=5&ab_channel=LeeRobinson
 
-59.23
+## Snapshot of DB
+
+We get a snapshot, make a variable (empty list), then iterate over those values and add them to the list.
+
+```js
+import firebase from "./firebase-admin";
+
+export async function getAllFeedback(siteId) {
+    const snapshot = await firebase
+    .collection('feedback')
+    .where('siteId', "==", siteId)
+    .get()
+
+    const feedback = []
+
+    snapshot.forEach((doc) => {
+        feedback.push({ id: doc.id, ...doc.data() })
+    })
+
+    return feedback
+}
+```
+
+Then we create a folder in ```api``` called feedback -> ```[siteId].js``` which will be some kind of dynamic page.
+
+We use the request to look at the ```siteID``` coming in, probably as the url then we use that to ping ```firestore``` and fetch that siteId and render the info using the ```getAllFeedback()``` helper function 
+
+https://www.youtube.com/watch?v=1nRWL5ljOqU&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=6&ab_channel=LeeRobinson
+
+11.07

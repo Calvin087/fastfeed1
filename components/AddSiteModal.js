@@ -19,6 +19,7 @@ import {
     useDisclosure
 } from "@chakra-ui/react";
 
+
 const AddSiteModal = ({ children }) => {
     const initialRef = useRef();
     const toast = useToast();
@@ -27,23 +28,27 @@ const AddSiteModal = ({ children }) => {
     const { register, handleSubmit } = useForm();
 
     const onCreateSite = ({ websiteName, websiteUrl }) => {
-        createSite({
+        const newSite = {
             authorID: auth.user.uid,
             createdAt: new Date().toISOString(),
-            websiteName: websiteName,
-            websiteUrl: websiteUrl
-        });
+            websiteName,
+            websiteUrl
+        };
+
+        createSite(newSite);
+
         toast({
             title: "All Done!",
             description: "We've updated your sites for you.",
-            status: "success",
+            status: "success", 
             duration: 5000,
             isClosable: true
         });
-        mutate(
-            "/api/sites",
-            mutate("/api/user", { ...data, name: newName }, false)
-        );
+        
+        mutate('/api/sites', async (data) => {
+            return { sites: [...data.sites, newSite] }
+        }, false)
+
         onClose();
     };
 
