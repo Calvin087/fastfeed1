@@ -323,7 +323,7 @@ export default async (_, res) => {
 
 ## Snapshot of DB + Dynamic Routing
 
-[Dynamic Routing](https://nextjs.org/docs/api-routes/dynamic-api-routes)
+[Dynamic api Routing](https://nextjs.org/docs/api-routes/dynamic-api-routes)
 ```[fileName].js``` will send fileName as a variable to the page query. It's whatever is attached to the end of the URL and that will act as a variable, so it could be a id from the database or a location in a city.
 
 We get a snapshot, make a variable (empty list), then iterate over those values and add them to the list.
@@ -366,6 +366,38 @@ Visiting this page returns a json object from the db for this specific ID which 
   - getStaticProps + getStaticPaths boilerplate from nextjs page
   - strip out the params route being passed in and send it to helper function.
 
+**Chakra**
+Box is like a div with styling features available.
+
+**Form Control**
+Doesn't always render a Form Form. So may need to be wrapped. ie: with single email inputs etc
+
+### Routing 
+
+[Dynamic Routing](https://nextjs.org/docs/routing/dynamic-routes)
+
+I can use the useRouter hook, to get the value that I'm using to dynamically generate the url.
+
+**UseRef**
+[useRef](https://reactjs.org/docs/hooks-reference.html#useref)
+
+```js
+const inputEl = useRef()
+
+<Input ref={inputEl} type="comment" id="comment" />
+```
+
+**Ordering by Date**
+[```compareDesc```](https://date-fns.org/docs/compareDesc)
+
+```js
+
+feedback.sort((a, b) =>
+        compareDesc(parseISO(a.createdAt), parseISO(b.createdAt))
+    );
+
+```
+
 https://www.youtube.com/watch?v=1nRWL5ljOqU&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=6&ab_channel=LeeRobinson
 
-23.36
+41.44
