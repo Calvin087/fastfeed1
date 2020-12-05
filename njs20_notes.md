@@ -398,6 +398,27 @@ feedback.sort((a, b) =>
 
 ```
 
-https://www.youtube.com/watch?v=1nRWL5ljOqU&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=6&ab_channel=LeeRobinson
+### Link
 
-41.44
+useful... [passHref](https://nextjs.org/docs/api-reference/next/link#if-the-child-is-a-custom-component-that-wraps-an-a-tag)
+
+```js
+
+<NextLink href="/p/[siteId]" as={`/p/${site.id}`} passHref>
+    <Link>View Feedback</Link>
+</NextLink>
+
+```
+
+### Fetching personal data only
+
+Firebase Auth uses JWTs
+- [JSON Web Token ie: JWT](https://jwt.io/)
+- [Firebase token verification](https://firebase.google.com/docs/auth/admin/verify-id-tokens)
+
+console logging the auth'd user shows "ya" as a key. This is my JWT which can be decoded later.
+
+**JWT**
+We stripped the token off of the raw user and send it as a GET request to the backend api with the headers
+
+2141

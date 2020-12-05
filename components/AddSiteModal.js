@@ -19,7 +19,6 @@ import {
     useDisclosure
 } from "@chakra-ui/react";
 
-
 const AddSiteModal = ({ children }) => {
     const initialRef = useRef();
     const toast = useToast();
@@ -40,14 +39,18 @@ const AddSiteModal = ({ children }) => {
         toast({
             title: "All Done!",
             description: "We've updated your sites for you.",
-            status: "success", 
+            status: "success",
             duration: 5000,
             isClosable: true
         });
-        
-        mutate('/api/sites', async (data) => {
-            return { sites: [...data.sites, newSite] }
-        }, false)
+
+        mutate(
+            ['/api/sites', auth.user.token],
+            async (data) => {
+                return { sites: [...data.sites, newSite] };
+            },
+            false
+        );
 
         onClose();
     };
