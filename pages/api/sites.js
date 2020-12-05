@@ -2,7 +2,12 @@ import { getAllSites } from "@/lib/db-admin";
 import db from "@/lib/firebase-admin";
 
 export default async (_, res) => {
-    const sites = await getAllSites()
-    res.status(200).json({ sites })
+    const {sites, error} = await getAllSites()
+    
+    if (error) {
+        res.status(500).json({ error });
+    } else {
+        res.status(200).json({ sites });
+    }
 
 }
