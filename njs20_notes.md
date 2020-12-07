@@ -449,4 +449,6 @@ export default function Home() {
 
 ```
 
-### Incremental Static generation
+### Incremental Static Regeneration
+[Blog post](https://nextjs.org/blog/next-9-5)
+When new requests hit these pages, it will check for new content and update in the background.

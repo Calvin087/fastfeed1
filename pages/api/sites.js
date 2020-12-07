@@ -5,6 +5,7 @@ export default async (req, res) => {
     // console.log(req);
     try {
         const { uid } = await auth.verifyIdToken(req.headers.token);
+        console.log(uid);
 
         const sites = await getUserSites(uid);
         res.status(200).json(sites);
