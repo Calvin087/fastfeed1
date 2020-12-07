@@ -421,4 +421,32 @@ console logging the auth'd user shows "ya" as a key. This is my JWT which can be
 **JWT**
 We stripped the token off of the raw user and send it as a GET request to the backend api with the headers
 
-2141
+
+### Magic link / log in
+
+[Magic article](https://vercel.com/blog/simple-auth-with-magic-link-and-nextjs)
+[JS Cookie](https://github.com/js-cookie/js-cookie/tree/latest#readme)
+
+You need to save a cookie before this works.
+```js
+
+import Head from "next/head";
+
+export default function Home() {
+  return (
+    <>
+      <Head>
+        <script dangerouslySetInnerHTML={{ __html: `
+          if (document.cookie && document.cookie.includes('authed')) {
+            window.location.href = "/dashboard"
+          }
+        ` }} />
+      </Head>
+      <Link href="/login"><a>Login</a></Link>
+    </>
+  );
+}
+
+```
+
+### Incremental Static generation
