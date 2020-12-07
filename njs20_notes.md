@@ -452,3 +452,9 @@ export default function Home() {
 ### Incremental Static Regeneration
 [Blog post](https://nextjs.org/blog/next-9-5)
 When new requests hit these pages, it will check for new content and update in the background.
+
+
+
+https://www.youtube.com/watch?v=Fvoi6g52bk0&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=8&ab_channel=LeeRobinson
+
+1229

@@ -4,14 +4,10 @@ import {
     Link,
     Stack,
     Avatar,
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    Heading,
-    Button,
+    Button
 } from "@chakra-ui/react";
-import AddSiteModal from "./AddSiteModal";
 import TheLogo from "./logo";
+import SiteTableHeader from "@/components/SiteTableHeader";
 
 const DashboardShell = ({ children }) => {
     const { user, signout } = useAuth();
@@ -55,17 +51,7 @@ const DashboardShell = ({ children }) => {
                     mr="auto"
                     direction="column"
                 >
-                    <Breadcrumb>
-                        <BreadcrumbItem isCurrentPage>
-                            <BreadcrumbLink color="gray.700" fontSize="sm">
-                                Sites
-                            </BreadcrumbLink>
-                        </BreadcrumbItem>
-                    </Breadcrumb>
-                    <Flex justifyContent="space-between">
-                        <Heading mb={4}>Sites</Heading>
-                        <AddSiteModal>+ Add Site</AddSiteModal>
-                    </Flex>
+                    <SiteTableHeader />
                     {children}
                 </Flex>
             </Flex>
