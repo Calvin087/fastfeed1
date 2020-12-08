@@ -454,7 +454,24 @@ export default function Home() {
 When new requests hit these pages, it will check for new content and update in the background.
 
 
+### Optimistic UI + SWR
 
-https://www.youtube.com/watch?v=Fvoi6g52bk0&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=8&ab_channel=LeeRobinson
+```js
 
-1229
+import { mutate } from 'swr'
+
+```
+
+```js
+
+mutate(
+        ['/api/sites', auth.user.token],
+        async (data) => {
+            return { sites: [...data.sites, newSite] };
+        },
+        false
+      );
+
+```
+
+Sometimes things don't update immediately because the data is cached, SWR does a check once the focus is on and off the browser window.

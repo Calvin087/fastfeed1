@@ -1,7 +1,8 @@
 import React from "react";
-import { Box, Code } from "@chakra-ui/react";
+import { Box, Code, Switch, IconButton } from "@chakra-ui/react";
+import { DeleteIcon } from "@chakra-ui/icons";
 import { Table, Tr, Th, Td } from "./Table";
-
+import RemoveButton from "./RemoveButton";
 
 const FeedbackTable = ({ allFeedback }) => {
     return (
@@ -18,12 +19,20 @@ const FeedbackTable = ({ allFeedback }) => {
             <tbody>
                 {allFeedback.map((feedback) => (
                     <Box as="tr" key={feedback.id}>
-                        <Td fontWeight="medium">{feedback.name}</Td>
+                        <Td fontWeight="medium">{feedback.author}</Td>
                         <Td>{feedback.text}</Td>
                         <Td>
-                            <Code>{'/'}</Code>
+                            <Code>{"/"}</Code>
                         </Td>
-                        <Td>{'Remove'}</Td>
+                        <Td>
+                            <Switch
+                                colorScheme="green"
+                                defaultIsChecked={feedback.status === "active"}
+                            />
+                        </Td>
+                        <Td>
+                            <RemoveButton feedbackId={feedback.id} />
+                        </Td>
                     </Box>
                 ))}
             </tbody>

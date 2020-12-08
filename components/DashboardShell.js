@@ -51,7 +51,6 @@ const DashboardShell = ({ children }) => {
                     mr="auto"
                     direction="column"
                 >
-                    <SiteTableHeader />
                     {children}
                 </Flex>
             </Flex>

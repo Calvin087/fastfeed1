@@ -5,6 +5,7 @@ import fetcher from "@/utils/fetcher";
 import SiteTableSkeleton from "@/components/SiteTableSkeleton";
 import useSWR from "swr";
 import FeedbackTable from "@/components/FeedbackTable";
+import FeedbackTableHeader from "@/components/FeedbackTableHeader";
 
 const MyFeedback = () => {
     const { user } = useAuth();
@@ -14,6 +15,7 @@ const MyFeedback = () => {
     if (!data) {
         return (
             <DashboardShell>
+            <FeedbackTableHeader />
                 <SiteTableSkeleton />
             </DashboardShell>
         );
@@ -21,6 +23,7 @@ const MyFeedback = () => {
 
     return (
         <DashboardShell>
+            <FeedbackTableHeader />
             {data.feedback ? (
                 <FeedbackTable allFeedback={data.feedback} />
             ) : (
