@@ -10,7 +10,7 @@ const GlobalStyle = ({ children }) => {
             <Global
                 styles={css`
                     html {
-                        min-width:360px;
+                        min-width:460px;
                         scroll-behavior: smooth;
                     }
                     

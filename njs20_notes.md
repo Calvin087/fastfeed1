@@ -476,5 +476,4 @@ mutate(
 
 Sometimes things don't update immediately because the data is cached, SWR does a check once the focus is on and off the browser window.
 
-https://www.youtube.com/watch?v=Fvoi6g52bk0&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=8&ab_channel=LeeRobinson
-41.07
+https://www.youtube.com/watch?v=3YTv_MhmcMI&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=9&ab_channel=LeeRobinson
