@@ -23,7 +23,7 @@ const Home = () => {
           }
         `
                     }}
-                />ß
+                />
                 <title>Fastish Feedback</title>
             </Head>
 

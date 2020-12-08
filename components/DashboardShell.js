@@ -1,11 +1,6 @@
 import { useAuth } from "@/lib/auth";
-import {
-    Flex,
-    Link,
-    Stack,
-    Avatar,
-    Button
-} from "@chakra-ui/react";
+import NextLink from "next/link";
+import { Flex, Link, Stack, Avatar, Button } from "@chakra-ui/react";
 import TheLogo from "./logo";
 import SiteTableHeader from "@/components/SiteTableHeader";
 
@@ -21,9 +16,17 @@ const DashboardShell = ({ children }) => {
                 px={8}
             >
                 <Stack spacing={2} isInline alignItems="center">
-                    <TheLogo color="red.500" w={8} h={8} />
-                    <Link>Feedback</Link>
-                    <Link>Sites</Link>
+                    <NextLink href="/" passHref>
+                        <Link>
+                            <TheLogo color="red.500" w={8} h={8} mr={8} />
+                        </Link>
+                    </NextLink>
+                    <NextLink href="/feedback" passHref>
+                        <Link mr={4}>Feedback</Link>
+                    </NextLink>
+                    <NextLink href="/dashboard" passHref>
+                        <Link mr={4}>Sites</Link>
+                    </NextLink>
                 </Stack>
                 <Flex
                     justifyContent="flex-start"
