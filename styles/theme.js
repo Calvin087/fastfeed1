@@ -56,7 +56,7 @@ const theme = {
                     />
                 </g>
             ),
-            viewBox: "0 0 533.5 544.3"
+            viewBox: "0 0 20.5 20.3"
         }
     }
 };
