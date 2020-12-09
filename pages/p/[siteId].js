@@ -1,4 +1,4 @@
-import FeedbackLink from "@/components/FeebackLink";
+import FeedbackLink from "@/components/FeedbackLink";
 import {
     FormControl,
     FormLabel,

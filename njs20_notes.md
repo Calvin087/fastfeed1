@@ -476,4 +476,8 @@ mutate(
 
 Sometimes things don't update immediately because the data is cached, SWR does a check once the focus is on and off the browser window.
 
-https://www.youtube.com/watch?v=3YTv_MhmcMI&list=PL6bwFJ82M6FXgctyoWXqj7H0GK8_YIeF1&index=9&ab_channel=LeeRobinson
+### Adding Checkly testing using pupeteer
+
+- [Set up video](https://youtu.be/qxg4zedJOio)
+- [Checkly](https://www.checklyhq.com/) 8.30
+- [Logging](https://logflare.app/) 23.08
