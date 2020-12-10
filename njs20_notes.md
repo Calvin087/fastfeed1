@@ -1,4 +1,5 @@
 https://github.com/leerob/fastfeedback/pulls?q=
+[Interesting MVP template](https://github.com/jaredpalmer/minimum-viable-saas)
 
 # Firebase
 
@@ -481,3 +482,35 @@ Sometimes things don't update immediately because the data is cached, SWR does a
 - [Set up video](https://youtu.be/qxg4zedJOio)
 - [Checkly](https://www.checklyhq.com/) 8.30
 - [Logging](https://logflare.app/) 23.08
+
+### Setting up stripe
+
+[Firebase Extensions](https://firebase.google.com/products/extensions)
+[Interesting MVP template](https://github.com/jaredpalmer/minimum-viable-saas)
+
+[Stripe Branding](https://dashboard.stripe.com/settings/branding)
+[Dev Tab](https://dashboard.stripe.com/test/developers)
+[Restricted Key](https://dashboard.stripe.com/test/apikeys/create)
+
+- **Write**
+  - Customers
+  - Checkout Portal
+  - Checkout Sessions
+- **Read**
+  - Subscriptions
+
+Update Rules
+Set up [Webhooks](https://dashboard.stripe.com/test/webhooks)
+- Add endpoints
+- Copy and paste URL from firebase instructions
+- Copy the list of hooks required
+
+Firebase Setup
+- Extension and reconfigure
+- Copy Stripe webhook secret and paste
+
+Customer Portal
+- Configure [this page](https://dashboard.stripe.com/test/settings/billing/portal)
+  - Based on [these rules](https://github.com/jaredpalmer/minimum-viable-saas)
+
+https://youtu.be/d9HGdw8zwvc?t=1977
