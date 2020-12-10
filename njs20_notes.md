@@ -501,8 +501,8 @@ Sometimes things don't update immediately because the data is cached, SWR does a
 
 Update Rules
 Set up [Webhooks](https://dashboard.stripe.com/test/webhooks)
-- Add endpoints
-- Copy and paste URL from firebase instructions
+- Add endpoints from Firebase
+- Copy and paste URL from firebase instructions into stripe 
 - Copy the list of hooks required
 
 Firebase Setup
@@ -513,4 +513,9 @@ Customer Portal
 - Configure [this page](https://dashboard.stripe.com/test/settings/billing/portal)
   - Based on [these rules](https://github.com/jaredpalmer/minimum-viable-saas)
 
-https://youtu.be/d9HGdw8zwvc?t=1977
+**Products**
+- Add metadata to products
+  - firebaseRole / starter 
+- These get synced to the database automatically.
+
+https://youtu.be/d9HGdw8zwvc?t=2094
