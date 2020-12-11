@@ -484,7 +484,7 @@ Sometimes things don't update immediately because the data is cached, SWR does a
 - [Logging](https://logflare.app/) 23.08
 
 ### Setting up stripe
-
+[Docs Lee](https://react-2025-docs.vercel.app/payments/stripe)
 [Firebase Extensions](https://firebase.google.com/products/extensions)
 [Interesting MVP template](https://github.com/jaredpalmer/minimum-viable-saas)
 
@@ -517,5 +517,18 @@ Customer Portal
 - Add metadata to products
   - firebaseRole / starter 
 - These get synced to the database automatically.
+- Double check prices have been sent to firestore.
+- Products have **Sub collections**
+
+### Adding stripe to Next.js
+
+[copy pasta](https://github.com/jaredpalmer/minimum-viable-saas/blob/master/README_FB_STRIPE_POSTINSTALL.md)
+
+- Grab the price ID from the sub collection on firestore.
+  - Add price ID to db function call.
+- Add stripe ```npm i @stripe/stripe-js ``` to project
+  - Create stripe file to call it once
+  - Copy out the key variable name and add to env
+  - Get publishable key from stripe api page.
 
 https://youtu.be/d9HGdw8zwvc?t=2094
