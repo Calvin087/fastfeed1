@@ -1,41 +1,54 @@
-import { useAuth } from "@/lib/auth";
-import DashboardShell from "@/components/DashboardShell";
-import fetcher from "@/utils/fetcher";
-import useSWR from "swr";
-import { createCheckoutSession } from "@/lib/db";
+import { useState } from "react";
 import { Box, Button } from "@chakra-ui/react";
 
+import { useAuth } from "@/lib/auth";
+import { createCheckoutSession, goToBillingPortal } from "@/lib/db";
+import DashboardShell from "@/components/DashboardShell";
+
 const Account = () => {
-    const { user } = useAuth();
-    const { data } = useSWR(user ? ["/api/sites", user.token] : null, fetcher);
-    // passing SWR two values, the api to call and a user token.
-
-    // if (!data) {
-    //     return (
-    //         <DashboardShell>
-    //         <SiteTableHeader />
-    //             <SiteTableSkeleton />
-    //         </DashboardShell>
-    //     );
-    // }
-
+    const { user, signout } = useAuth();
+    const [isCheckoutLoading, setCheckoutLoading] = useState(false);
+    const [isBillingLoading, setBillingLoading] = useState(false);
     return (
         <DashboardShell>
             <Box>
                 <Button
-                    onClick={(e) => createCheckoutSession(user.uid)}
+                    onClick={() => {
+                        setCheckoutLoading(true);
+                        createCheckoutSession(user.uid);
+                    }}
                     backgroundColor="gray.900"
                     color="white"
                     fontWeight="medium"
-                    mt={4}
-                    size="lg"
-                    _hover={{ bg: "gray.600" }}
+                    isLoading={isCheckoutLoading}
+                    _hover={{ bg: "gray.700" }}
                     _active={{
                         bg: "gray.800",
                         transform: "scale(0.95)"
                     }}
                 >
-                    Upgrade to starter
+                    Upgrade to Starter
+                </Button>
+                <Button
+                    onClick={() => {
+                        setBillingLoading(true);
+                        goToBillingPortal();
+                    }}
+                    backgroundColor="gray.900"
+                    color="white"
+                    fontWeight="medium"
+                    ml={4}
+                    isLoading={isBillingLoading}
+                    _hover={{ bg: "gray.700" }}
+                    _active={{
+                        bg: "gray.800",
+                        transform: "scale(0.95)"
+                    }}
+                >
+                    View Billing Portal
+                </Button>
+                <Button ml={4} onClick={() => signout()}>
+                    Log Out
                 </Button>
             </Box>
         </DashboardShell>

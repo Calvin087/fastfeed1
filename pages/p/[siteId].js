@@ -74,7 +74,11 @@ const SiteFeedback = ({ initialFeedback }) => {
             <Box as="form" onSubmit={onSubmit}>
                 <FormControl my={8}>
                     <FormLabel>Comment</FormLabel>
-                    <Input ref={inputEl} type="comment" id="comment" />
+                    <Input
+                        ref={inputEl}
+                        id="comment"
+                        placeholder="Leave a comment"
+                    />
                     <Button
                         mt={4}
                         type="submit"
