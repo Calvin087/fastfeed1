@@ -531,4 +531,4 @@ Customer Portal
   - Copy out the key variable name and add to env
   - Get publishable key from stripe api page.
 
-https://youtu.be/d9HGdw8zwvc?t=2094
+https://youtu.be/lVBv-deu4PI?t=1
