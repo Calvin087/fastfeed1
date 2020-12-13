@@ -530,5 +530,9 @@ Customer Portal
   - Create stripe file to call it once
   - Copy out the key variable name and add to env
   - Get publishable key from stripe api page.
+  - Make sure the location of the server is correct for goToBillingPortal()
+    - did you choose europe, us etc?
 
-https://youtu.be/lVBv-deu4PI?t=1
+Right now firestore only triggers for new users, it won't add the subscription details to existing auth'd users. Maybe that will be fixed soon.
+
+https://youtu.be/lVBv-deu4PI?t=1849
